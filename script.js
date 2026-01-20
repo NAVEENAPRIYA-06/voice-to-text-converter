@@ -4,7 +4,7 @@ const outputText = document.getElementById('text-output');
 const copyBtn = document.getElementById('copy-btn');
 const clearBtn = document.getElementById('clear-btn');
 const statusText = document.getElementById('status');
-
+const downloadBtn = document.getElementById('download-btn');
 // Initialize Speech Recognition API
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -14,7 +14,19 @@ if (!SpeechRecognition) {
     const recognition = new SpeechRecognition();
     recognition.continuous = true; // Keep listening even if user pauses
     recognition.interimResults = true; // Show results while speaking
-    recognition.lang = 'en-US'; // Set language
+
+const languageSelect = document.getElementById('language');
+
+// Initialize with default
+recognition.lang = 'en-US'; 
+
+// Add this event listener to change language dynamically
+languageSelect.addEventListener('change', () => {
+    recognition.lang = languageSelect.value;
+    statusText.innerText = "Language set to " + languageSelect.options[languageSelect.selectedIndex].text;
+});
+
+// ... rest of your code ...
 
     // Start Recording
     startBtn.addEventListener('click', () => {
@@ -61,3 +73,27 @@ if (!SpeechRecognition) {
         outputText.value = "";
     });
 }
+downloadBtn.addEventListener('click', () => {
+    const text = outputText.value;
+    
+    // Check if empty
+    if(!text) {
+        alert("There is no text to download!");
+        return;
+    }
+
+    // Create a Blob (a file-like object of immutable raw data)
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    
+    // Create a hidden link to trigger the download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'voice-note.txt'; // The filename
+    document.body.appendChild(a);
+    a.click(); // Simulate a click
+    
+    // Cleanup
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});

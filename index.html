@@ -12,7 +12,16 @@
     <div class="container">
         <h1>🎙️ Speech to Text</h1>
         <p>Click "Start" and speak into your microphone.</p>
-
+        <div class="language-select">
+    <label for="language">Select Language:</label>
+    <select id="language">
+        <option value="en-US">English (US)</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="es-ES">Spanish</option>
+        <option value="fr-FR">French</option>
+        <option value="ta-IN">Tamil</option>
+    </select>
+</div>
         <div class="result-container">
             <textarea id="text-output" placeholder="Your speech will appear here..." readonly></textarea>
         </div>
@@ -22,6 +31,7 @@
             <button id="stop-btn" class="btn stop" disabled>Stop</button>
             <button id="copy-btn" class="btn copy">Copy Text</button>
             <button id="clear-btn" class="btn clear">Clear</button>
+            <button id="download-btn" class="btn download">Download</button>
         </div>
         <p id="status" class="status-text">Microphone is off</p>
     </div>
