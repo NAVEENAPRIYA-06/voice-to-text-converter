@@ -1,12 +1,22 @@
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* The 4 colors below create the magic */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
     color: #333;
+}
+
+/* This makes the background move */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -83,7 +93,7 @@ textarea:focus { outline: none; border-color: #764ba2; }
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    
     color: #fff;
 }
 
