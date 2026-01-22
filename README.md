@@ -8,7 +8,7 @@ A fast, responsive web application that converts speech into text in real-time u
 
 ## Live Demo
 
-**[Click here to view the Live Demo](https://naveenapriya-06.github.io/voice-to-text-converter/)**
+**[Live Demo](https://naveenapriya-06.github.io/voice-to-text-converter/)**
 
 ## Features
 
