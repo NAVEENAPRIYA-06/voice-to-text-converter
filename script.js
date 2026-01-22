@@ -97,3 +97,18 @@ downloadBtn.addEventListener('click', () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 });
+// --- Dark Mode Logic ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+    // Toggle the class
+    body.classList.toggle('dark-mode');
+
+    // Change the button text
+    if (body.classList.contains('dark-mode')) {
+        themeToggleBtn.innerText = "☀️ Light Mode";
+    } else {
+        themeToggleBtn.innerText = "🌙 Dark Mode";
+    }
+});
