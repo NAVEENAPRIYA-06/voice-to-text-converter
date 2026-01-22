@@ -97,18 +97,27 @@ downloadBtn.addEventListener('click', () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 });
-// --- Dark Mode Logic ---
+// --- Dark Mode & Local Storage Logic ---
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
 
+// 1. Check if user previously selected Dark Mode
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggleBtn.innerText = "☀️ Light Mode";
+}
+
 themeToggleBtn.addEventListener('click', () => {
-    // Toggle the class
     body.classList.toggle('dark-mode');
 
-    // Change the button text
     if (body.classList.contains('dark-mode')) {
         themeToggleBtn.innerText = "☀️ Light Mode";
+        // Save preference to Local Storage
+        localStorage.setItem('theme', 'dark');
     } else {
         themeToggleBtn.innerText = "🌙 Dark Mode";
+        // Save preference to Local Storage
+        localStorage.setItem('theme', 'light');
     }
 });
